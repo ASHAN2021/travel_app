@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/widgets/app_large_text.dart';
 import 'package:travel_app/widgets/app_text.dart';
+import 'package:travel_app/widgets/responsive_button.dart';
 
 class Welcomepage extends StatefulWidget {
   const Welcomepage({super.key});
@@ -29,6 +30,7 @@ class _WelcomepageState extends State<Welcomepage> {
               child: Container(
                 margin: const EdgeInsets.only(top: 100, left: 20, right: 10),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +49,28 @@ class _WelcomepageState extends State<Welcomepage> {
                               text:
                                   "Mountain hikes give you an incredible sense of freedom along with endurance tests.  "),
                         ),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Responsivebutton(
+                          width: 120,
+                        ),
                       ],
+                    ),
+                    Column(
+                      children: List.generate(3, (indexDots) {
+                        return Container(
+                          margin: EdgeInsets.only(bottom: 2),
+                          width: 8,
+                          height: index == indexDots ? 25 : 8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: index == indexDots
+                                ? Colors.grey
+                                : Colors.grey.withOpacity(0.3),
+                          ),
+                        );
+                      }),
                     ),
                   ],
                 ),
