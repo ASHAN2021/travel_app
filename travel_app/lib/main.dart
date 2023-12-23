@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/pages/navpages/main_page.dart';
 import 'package:travel_app/pages/welcome_page.dart';
 
 void main() {
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: Welcomepage(),
+      home: Mainpage(),
     );
   }
 }
