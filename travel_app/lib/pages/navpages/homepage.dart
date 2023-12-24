@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/widgets/app_large_text.dart';
+import 'package:travel_app/widgets/app_text.dart';
 
 class homepage extends StatefulWidget {
   const homepage({super.key});
@@ -9,6 +10,12 @@ class homepage extends StatefulWidget {
 }
 
 class _homepageState extends State<homepage> with TickerProviderStateMixin {
+  var images = {
+    "ballooning.png": "Ballooning",
+    "hiking.png": "Hiking",
+    "kayaking.png": "Kayaking",
+    "snorking.png": "Snorking"
+  };
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
@@ -48,7 +55,7 @@ class _homepageState extends State<homepage> with TickerProviderStateMixin {
           ),
         ),
         SizedBox(
-          height: 40,
+          height: 20,
         ),
         Container(
           margin: EdgeInsets.only(
@@ -78,17 +85,87 @@ class _homepageState extends State<homepage> with TickerProviderStateMixin {
           ),
         ),
         Container(
+          margin: EdgeInsets.only(left: 20),
           height: 300,
           width: double.maxFinite,
           child: TabBarView(
             controller: _tabController,
             children: [
-              Text("Hi"),
+              ListView.builder(
+                  itemCount: 3,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      margin: EdgeInsets.only(right: 15, top: 10),
+                      width: 200,
+                      height: 300,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: AssetImage("img/mountain1.png"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  }),
               Text("there"),
               Text("bye"),
             ],
           ),
-        )
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          margin: EdgeInsets.only(left: 20, right: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Applargetext(
+                text: "Explore more",
+                size: 22,
+              ),
+              Apptext(
+                text: "see all",
+                color: Colors.black.withOpacity(0.3),
+              )
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: 90,
+          width: double.maxFinite,
+          margin: EdgeInsets.only(left: 20),
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 4,
+              itemBuilder: (_, index) {
+                return Container(
+                  margin: EdgeInsets.only(right: 30),
+                  child: Column(children: [
+                    Container(
+                      // margin: EdgeInsets.only(right: 20),
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image:
+                              AssetImage("img/" + images.keys.elementAt(index)),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Apptext(text: images.values.elementAt(index)),
+                    ),
+                  ]),
+                );
+              }),
+        ),
       ]),
     );
   }
