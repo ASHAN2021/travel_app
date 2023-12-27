@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/pages/navpages/main_page.dart';
 import 'package:travel_app/widgets/app_button.dart';
 import 'package:travel_app/widgets/app_large_text.dart';
 import 'package:travel_app/widgets/app_text.dart';
@@ -42,8 +43,11 @@ class _DetailpageState extends State<Detailpage> {
               child: Row(
                 children: [
                   IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.menu),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Mainpage()));
+                    },
+                    icon: Icon(Icons.arrow_back),
                     color: Colors.white,
                   ),
                 ],

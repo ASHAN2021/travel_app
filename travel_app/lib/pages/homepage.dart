@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/pages/detail_page.dart';
+import 'package:travel_app/pages/welcome_page.dart';
 import 'package:travel_app/widgets/app_large_text.dart';
 import 'package:travel_app/widgets/app_text.dart';
 
@@ -32,10 +34,18 @@ class _homepageState extends State<homepage> with TickerProviderStateMixin {
                 children: [
                   Column(
                     children: [
-                      Icon(
-                        Icons.menu,
-                        size: 30,
-                        color: Colors.black,
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Welcomepage()));
+                        },
+                        icon: Icon(
+                          Icons.arrow_back,
+                          size: 30,
+                          color: Colors.black,
+                        ),
                       ),
                     ],
                   ),
@@ -102,7 +112,9 @@ class _homepageState extends State<homepage> with TickerProviderStateMixin {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
-                          image: AssetImage("img/mountain1.png"),
+                          image: AssetImage(
+                            "img/mountain1.png",
+                          ),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -116,20 +128,26 @@ class _homepageState extends State<homepage> with TickerProviderStateMixin {
         SizedBox(
           height: 10,
         ),
-        Container(
-          margin: EdgeInsets.only(left: 20, right: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Applargetext(
-                text: "Explore more",
-                size: 22,
-              ),
-              Apptext(
-                text: "see all",
-                color: Colors.black.withOpacity(0.3),
-              )
-            ],
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Detailpage()));
+          },
+          child: Container(
+            margin: EdgeInsets.only(left: 20, right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Applargetext(
+                  text: "Explore more",
+                  size: 22,
+                ),
+                Apptext(
+                  text: "see all",
+                  color: Colors.black.withOpacity(0.3),
+                )
+              ],
+            ),
           ),
         ),
         SizedBox(

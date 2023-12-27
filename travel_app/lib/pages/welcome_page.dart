@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/pages/navpages/main_page.dart';
 import 'package:travel_app/widgets/app_large_text.dart';
 import 'package:travel_app/widgets/app_text.dart';
 import 'package:travel_app/widgets/responsive_button.dart';
@@ -52,8 +53,19 @@ class _WelcomepageState extends State<Welcomepage> {
                         SizedBox(
                           height: 40,
                         ),
-                        Responsivebutton(
-                          width: 120,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Mainpage()));
+                          },
+                          child: Container(
+                            width: 200,
+                            child: Responsivebutton(
+                              width: 120,
+                            ),
+                          ),
                         ),
                       ],
                     ),

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travel_app/cubit/app_cubit_logics.dart';
+import 'package:travel_app/cubit/app_cubit_state.dart';
+import 'package:travel_app/cubit/app_cubits.dart';
 import 'package:travel_app/pages/detail_page.dart';
 import 'package:travel_app/pages/navpages/main_page.dart';
 import 'package:travel_app/pages/welcome_page.dart';
@@ -35,7 +39,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: Detailpage(),
+      home: BlocProvider<Appcubits>(
+        create: (context) => Appcubits(),
+        child: Appcubitlogics(),
+      ),
     );
   }
 }
